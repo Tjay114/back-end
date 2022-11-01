@@ -23,18 +23,18 @@ class ApplicationController < Sinatra::Base
   end
 
   #users routes
-  get '/users' do
-    get_users = User.all
-    get_users.to_json
+  get '/user' do
+    get_user = User.all
+    get_user.to_json
   end
 
-  get '/users/:id' do
-    get_users_by_id = User.find(params[:id])
-    get_users_by_id.to_json
+  get '/user/:id' do
+    get_user_by_id = User.find(params[:id])
+    get_user_by_id.to_json
   end
 
   post '/user' do
-    new_user  User.create(
+    new_user = User.create(
       name: params[:name], 
       email: params[:email], 
       password_digest: params[:password_digest]
