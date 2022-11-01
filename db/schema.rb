@@ -24,8 +24,8 @@ ActiveRecord::Schema.define(version: 2022_10_31_105827) do
     t.string "image"
     t.string "title"
     t.boolean "isFavorite"
-    t.integer "start_date"
-    t.integer "end_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
