@@ -21,4 +21,111 @@ class ApplicationController < Sinatra::Base
   get "/" do
     {message: "Good luck with your project!"}.to_json
   end
+
+  #users routes
+  get '/users' do
+    get_users = User.all
+    get_users.to_json
+  end
+
+  get '/users/:id' do
+    get_users_by_id = User.find(params[:id])
+    get_users_by_id.to_json
+  end
+
+  post '/user' do
+    new_user  User.create(
+      name: params[:name], 
+      email: params[:email], 
+      password_digest: params[:password_digest]
+    )
+    new_user.to_json
+  end
+
+  patch '/user/:id' do
+    patch_user = User.find(params[:id])
+    patch_user.update(
+      name: params[:name],
+      email: params[:email],
+      password_digest: params[:password_digest]
+    )
+    patch_user.to_json
+  end
+
+  delete '/user/:id' do
+    delete_user = User.find(params[:id])
+    delete_user.destroy
+    delete_user.to_json
+  end
+
+  #destinations routes
+  get '/destination' do
+    get_destination = Destination.all
+    get_destination.to_json
+  end
+
+  get '/destination/:id' do
+    get_destination_by_id = Destination.find(params[:id])
+    get_destination_by_id.to_json
+  end
+
+  post '/destination' do
+    new_destination = Destination.create(
+      city: params[:city],
+      country: params[:country]
+    )
+    new_destination.to_json
+  end
+
+  patch '/destination/:id' do
+    patch_destination = Destination.find(params[:id])
+    patch_destination.update(
+      city: params[:city],
+      country: params[:country]
+    )
+    patch_destination.to_json
+  end
+
+  delete '/destination/:id' do
+    delete_destination = Destination.find(params[:id])
+    delete_destination.destroy
+    delete_destination.to_json
+  end
+
+  #trips routes
+  get '/trip' do
+    get_trip = Trip.all
+    get_trip.to_json
+  end
+
+  get '/trip/:id' do
+    get_trip_by_id = Trip.find(params[:id])
+    get_trip_by_id.to_json
+  end
+
+  post '/trip' do
+    new_trip = Trip.create(
+      image: params[:image],
+      title: params[:title],
+      isFavorite: params[:isFavorite]
+    )
+    new_trip.to_json
+  end
+
+  patch '/trip/:id' do
+    patch_trip = Trip.find(params[:id])
+    patch_trip.update(
+      image: params[:image],
+      title: params[:title],
+      isFavorite: params[:isFavorite]
+    )
+    patch_trip.to_json
+  end
+
+  delete '/trip/:id' do
+    delete_trip = Trip.find(params[:id])
+    delete_trip.destroy
+    delete_trip.to_json
+  end
+  
 end
