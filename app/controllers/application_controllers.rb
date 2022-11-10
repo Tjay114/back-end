@@ -72,7 +72,8 @@ class ApplicationController < Sinatra::Base
   post '/destination' do
     new_destination = Destination.create(
       city: params[:city],
-      country: params[:country]
+      country: params[:country],
+      user_id: params[:user_id]
     )
     new_destination.to_json
   end
